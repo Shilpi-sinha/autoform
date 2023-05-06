@@ -1,4 +1,4 @@
-import "./style.css"
+import "./style.css";
 import { useState } from "react";
 
 const data = [
@@ -54,47 +54,60 @@ const AutoComplete = () => {
     setFilteredData([]);
   };
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit}> 
-        <input
-          type="text"
-          value={query}
-          onChange={handleChange}
-          placeholder="search here..."
-          style={{color:"rgb(211, 204, 204)"}}
-        />
-        <button type="submit">Search</button>
-        <span className="clearbtn" onClick={handleClear}>
-          Clear
-        </span>
-      </form>
-    
-  <ul className="matchbox" >
-        {filteredData.map((item, index) => (
-          <li key={index} onClick={() => handleList(item)}>
-            {item.toLowerCase().indexOf(query.toLowerCase()) !== -1 ? (
-              <span className="match" style={{color:"rgb(211, 204, 204)"}}>{item}</span>
-            ) : (
-              item
-            )}
-          </li>
-        ))}
-        </ul>
-        <ul className="resultbox">
-        {pastQueries.slice(-5).map((item, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              handleListClick(item);
-            }}
-            style={{color:"rgb(211, 204, 204)"}}
+    <>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={query}
+            onChange={handleChange}
+            placeholder="search here..."
+            style={{ color: "rgb(211, 204, 204)" }}
+          />
+          <button type="submit">Search</button>
+          <span className="clearbtn" onClick={handleClear}>
+            Clear
+          </span>
+        </form>
 
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
+        <ul className="matchbox">
+          {filteredData.map((item, index) => (
+            <li key={index} onClick={() => handleList(item)}>
+              {item.toLowerCase().indexOf(query.toLowerCase()) !== -1 ? (
+                <span className="match" style={{ color: "rgb(211, 204, 204)" }}>
+                  {item}
+                </span>
+              ) : (
+                item
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="table-container">
+        <table className="past-searches">
+          <thead>
+            <tr>
+              <th>Past Searches</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pastQueries.slice(-5).map((item, index) => (
+              <tr
+                className="pastSearchbox"
+                key={index}
+                onClick={() => {
+                  handleListClick(item);
+                }}
+                style={{ color: "rgb(211, 204, 204)" }}
+              >
+                {item}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 export default AutoComplete;
