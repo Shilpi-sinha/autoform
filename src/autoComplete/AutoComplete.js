@@ -1,33 +1,22 @@
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import data from "../data";
 
-const data = [
-  "apple",
-  "banana",
-  "cherry",
-  "date",
-  "elderberry",
-  "fig",
-  "grape",
-  "honeydew",
-  "kiwi",
-  "lemon",
-  "mango",
-  "nectarine",
-  "orange",
-  "pineapple",
-  "quince",
-  "raspberry",
-  "strawberry",
-  "tangerine",
-  "watermelon",
-];
-
+const queries = JSON.parse(localStorage.getItem("pastquery")) || [];
 const AutoComplete = () => {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [pastQueries, setPastQueries] = useState([]);
+  const [pastQueries, setPastQueries] = useState(queries);
   const [hoveredItem, setHoveredItem] = useState(null);
+
+  // useEffect(() => {
+  //   // const queries = JSON.parse(localStorage.getItem("pastquery")) || [];
+  //   setPastQueries(queries);
+  // }, []);
+
+  useEffect(() => {
+    localStorage.setItem("pastquery", JSON.stringify(pastQueries));
+  }, [pastQueries]);
 
   const handleListItemHover = (item) => {
     setHoveredItem(item);
@@ -49,6 +38,7 @@ const AutoComplete = () => {
   };
   const handleClear = () => {
     setQuery("");
+    setFilteredData([]);
   };
   const handleList = (value) => {
     setQuery(value);
@@ -58,6 +48,7 @@ const AutoComplete = () => {
     setQuery(value);
     setFilteredData([]);
   };
+
   return (
     <>
       <div className="container">
@@ -73,9 +64,11 @@ const AutoComplete = () => {
             }}
           />
           <button type="submit">Search</button>
-          <span className="clearbtn" onClick={handleClear}>
-            Clear
-          </span>
+          {query ? (
+            <span className="clearbtn" onClick={handleClear}>
+              ❌
+            </span>
+          ) : null}
         </form>
 
         <ul className="matchbox">

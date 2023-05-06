@@ -2,24 +2,24 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   margin: 0px;
   padding: 2rem;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-size: 62.5%;
   font-family: "Nova Square", cursive;
-  /* background-color: rgb(37, 37, 37); */
 }
+
 li {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   color: #fff;
-  width: 682px;
+  width: 313px;
   list-style: none;
   cursor: pointer;
   padding-left: 10px;
@@ -27,36 +27,42 @@ li {
 }
 
 form {
-  font-size: 75px;
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 90px;
 }
 
-button {
-  font-size: 4.4rem;
-  padding: 2.5rem 0;
+input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+}
 
-  width: 30rem;
-  text-align: center;
-  margin-bottom: 8rem;
-  text-decoration: none;
-
-  background: linear-gradient(
-    90deg,
-    rgb(18, 92, 255) 0%,
-    rgb(0, 102, 255) 100%
-  );
+button[type="submit"] {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  margin-left: 1rem;
+  border: none;
   border-radius: 4px;
+  background-color: #007aff;
+  color: #fff;
+  cursor: pointer;
 }
+
 button:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.2rem 0 rgba(8, 114, 244, 0.6);
   transition: transform 150ms;
   transform: scale(1.03);
 }
+
 .clearbtn {
-  font-size: 4.4rem;
-  background-color: rgb(202, 87, 87);
+  font-size: 2.3rem;
+  position: absolute;
+  margin-top: 1px;
+  right: 43.5%;
 }
+
 .clearbtn:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.2rem 0 rgba(8, 114, 244, 0.6);
@@ -66,8 +72,8 @@ button:hover {
 
 .matchbox {
   border: 2px solid rgb(37, 37, 37);
-  margin: -105px;
-  margin-left: -51.1rem;
+  margin: 0.5px;
+  margin-left: -11.5rem;
 }
 
 .table-container {
@@ -95,4 +101,29 @@ tr {
   font-size: 2.4rem;
   text-align: center;
   background-color: rgb(37, 37, 37);
+  cursor: pointer;
+}
+
+h4 {
+  font-size: 2.4rem;
+  color: #696d72;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
+
+@media screen and (max-width: 506px) {
+  li {
+    width: 219px;
+  }
+
+  .clearbtn {
+    position: absolute;
+    right: 41%;
+    font-size: 1.4rem;
+  }
+
+  .table-container {
+    margin-top: -38rem;
+  }
 }
