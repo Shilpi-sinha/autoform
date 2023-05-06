@@ -14,14 +14,18 @@
   padding: 0;
   font-size: 62.5%;
   font-family: "Nova Square", cursive;
-  background-color: rgb(37, 37, 37);
+  /* background-color: rgb(37, 37, 37); */
 }
 li {
-  font-size: 3.8rem;
-  margin-bottom: 0.1rem;
+  font-size: 2.8rem;
   color: #fff;
+  width: 682px;
   list-style: none;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 0px;
 }
+
 form {
   font-size: 75px;
   margin-top: 10px;
@@ -62,8 +66,8 @@ button:hover {
 
 .matchbox {
   border: 2px solid rgb(37, 37, 37);
-  margin: -102px;
-  margin-left: -80rem;
+  margin: -105px;
+  margin-left: -51.1rem;
 }
 
 .table-container {
@@ -90,4 +94,5 @@ thead th {
 tr {
   font-size: 2.4rem;
   text-align: center;
+  background-color: rgb(37, 37, 37);
 }

@@ -27,6 +27,11 @@ const AutoComplete = () => {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [pastQueries, setPastQueries] = useState([]);
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const handleListItemHover = (item) => {
+    setHoveredItem(item);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +67,10 @@ const AutoComplete = () => {
             value={query}
             onChange={handleChange}
             placeholder="search here..."
-            style={{ color: "rgb(211, 204, 204)" }}
+            style={{
+              color: "rgb(211, 204, 204)",
+              backgroundColor: "rgb(70, 69, 67)",
+            }}
           />
           <button type="submit">Search</button>
           <span className="clearbtn" onClick={handleClear}>
@@ -72,7 +80,17 @@ const AutoComplete = () => {
 
         <ul className="matchbox">
           {filteredData.map((item, index) => (
-            <li key={index} onClick={() => handleList(item)}>
+            <li
+              style={{
+                backgroundColor:
+                  item === hoveredItem ? "rgb(87 107 130)" : "rgb(70, 69, 67)",
+              }}
+              key={index}
+              onMouseEnter={() => handleListItemHover(item)}
+              onMouseLeave={() => handleListItemHover(null)}
+              onClick={() => handleList(item)}
+              className="list-item"
+            >
               {item.toLowerCase().indexOf(query.toLowerCase()) !== -1 ? (
                 <span className="match" style={{ color: "rgb(211, 204, 204)" }}>
                   {item}
