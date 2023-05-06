@@ -1,0 +1,77 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    margin: 0px;
+    padding: 2rem;
+   
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    font-family: "Nova Square", cursive;
+    background-color: rgb(37, 37, 37);
+  }
+  li {
+    font-size: 3.8rem;
+    margin-bottom: 0.1rem;
+    color: #fff;
+    list-style: none;
+  }
+  form {
+    
+    font-size: 75px;
+    margin-top:10px;
+    
+  }
+
+  button {
+    font-size: 4.4rem;
+    padding: 2.5rem 0;
+   
+    width: 30rem;
+    text-align: center;
+    margin-bottom: 8rem;
+    text-decoration: none;
+  
+    background: linear-gradient(
+      90deg,
+      rgb(18, 92, 255) 0%,
+      rgb(0, 102, 255) 100%
+    );
+    border-radius: 4px;
+  }
+  button:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.2rem 0 rgba(8, 114, 244, 0.6);
+    transition: transform 150ms;
+    transform: scale(1.03);
+  }
+  .clearbtn{
+    font-size: 4.4rem;
+    background-color:  rgb(202, 87, 87);  
+  }
+  .clearbtn:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.2rem 0 rgba(8, 114, 244, 0.6);
+    transition: transform 150ms;
+    transform: scale(1.03);
+  }
+  
+.matchbox{
+   border: 2px solid rgb(37, 37, 37);;
+   margin: -102px;
+   margin-left: -80rem;
+
+}
+.match{
+    border: 0cap;
+}
+.resultbox{
+    margin: 10rem;
+}
