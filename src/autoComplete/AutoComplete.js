@@ -158,7 +158,7 @@ const AutoComplete = () => {
             </tr>
           </thead>
           <tbody>
-            <tr style={{ color: "rgb(211, 204, 204)" }}>{result.name}</tr>
+            <tr style={{ color: "rgb(211, 204, 204)" }}>{result.name}</tr><hr/>
             <tr
               className="pastSearchbox"
               style={{ color: "rgb(211, 204, 204)" }}
