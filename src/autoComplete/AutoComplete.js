@@ -76,7 +76,6 @@ const AutoComplete = () => {
             value={query}
             onChange={handleChange}
             onFocus={() => handleInputFocus()}
-            onBlur={()=>setShowlastSearch(false)}
             placeholder="search here..."
             style={{
               color: "rgb(211, 204, 204)",
