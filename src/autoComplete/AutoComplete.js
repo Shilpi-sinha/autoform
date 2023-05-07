@@ -4,12 +4,14 @@ import birds from "../model";
 
 const queries = JSON.parse(localStorage.getItem("pastquery")) || [];
 const last = JSON.parse(localStorage.getItem("lastsearch")) || [];
+
 const AutoComplete = () => {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [pastQueries, setPastQueries] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [result, setResult] = useState("");
+  const [showlastSearch, setShowlastSearch] = useState(false);
 
   useEffect(() => {
     setResult(queries);
@@ -41,15 +43,16 @@ const AutoComplete = () => {
       setQuery("");
       setFilteredData([]);
     }
+    setShowlastSearch(false);
   };
   const handleChange = (event) => {
     const value = event.target.value;
-    // const value = event.target.value;
     setQuery(value);
     const filteredData = birds.filter((item) =>
       item.name.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredData(filteredData.slice(0, 5));
+    setShowlastSearch(false);
   };
 
   const handleClear = () => {
@@ -60,10 +63,9 @@ const AutoComplete = () => {
     setQuery(value);
     setFilteredData([]);
   };
-  // const handleEmpty = () => {};
-  // function handleInputFocus() {
-  //   setPastQueries(last);
-  // }
+  const handleInputFocus = () => {
+    setShowlastSearch(true);
+  };
 
   return (
     <>
@@ -73,8 +75,7 @@ const AutoComplete = () => {
             type="text"
             value={query}
             onChange={handleChange}
-            // onFocus={handleInputFocus}
-            // onClick={() => handleEmpty()}
+            onFocus={() => handleInputFocus()}
             placeholder="search here..."
             style={{
               color: "rgb(211, 204, 204)",
@@ -90,57 +91,52 @@ const AutoComplete = () => {
         </form>
 
         <ul className="matchbox">
-          {query
-            ? filteredData.map((item, index) => (
+          {filteredData.map((item, index) => (
+            <li
+              style={{
+                backgroundColor:
+                  item === hoveredItem ? "rgb(87 107 130)" : "rgb(70, 69, 67)",
+              }}
+              key={index}
+              onMouseEnter={() => handleListItemHover(item)}
+              onMouseLeave={() => handleListItemHover(null)}
+              onClick={() => handleList(item.name)}
+            >
+              {item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ? (
+                <>
+                  <span>
+                    {item.name.slice(
+                      0,
+                      item.name.toLowerCase().indexOf(query.toLowerCase())
+                    )}
+                  </span>
+                  <span className="highlight">
+                    {item.name.slice(
+                      item.name.toLowerCase().indexOf(query.toLowerCase()),
+                      item.name.toLowerCase().indexOf(query.toLowerCase()) +
+                        query.length
+                    )}
+                  </span>
+                  <span>
+                    {item.name.slice(
+                      item.name.toLowerCase().indexOf(query.toLowerCase()) +
+                        query.length
+                    )}
+                  </span>
+                </>
+              ) : (
+                item
+              )}
+            </li>
+          ))}
+          {showlastSearch
+            ? pastQueries.slice(-5).map((item, index) => (
                 <li
                   style={{
                     backgroundColor:
                       item === hoveredItem
                         ? "rgb(87 107 130)"
                         : "rgb(70, 69, 67)",
-                  }}
-                  key={index}
-                  onMouseEnter={() => handleListItemHover(item)}
-                  onMouseLeave={() => handleListItemHover(null)}
-                  onClick={() => handleList(item.name)}
-                >
-                  {item.name.toLowerCase().indexOf(query.toLowerCase()) !==
-                  -1 ? (
-                    <>
-                      <span>
-                        {item.name.slice(
-                          0,
-                          item.name.toLowerCase().indexOf(query.toLowerCase())
-                        )}
-                      </span>
-                      <span className="highlight">
-                        {item.name.slice(
-                          item.name.toLowerCase().indexOf(query.toLowerCase()),
-                          item.name.toLowerCase().indexOf(query.toLowerCase()) +
-                            query.length
-                        )}
-                      </span>
-                      <span>
-                        {item.name.slice(
-                          item.name.toLowerCase().indexOf(query.toLowerCase()) +
-                            query.length
-                        )}
-                      </span>
-                    </>
-                  ) : (
-                    item
-                  )}
-                </li>
-              ))
-            : pastQueries.slice(-5).map((item, index) => (
-                <li
-                  style={{
-                    backgroundColor:
-                      item === hoveredItem
-                        ? "rgb(87 107 130)"
-                        : "rgb(70, 69, 67)",
-                    // fontSize: "1.4rem",
-                    // padding:"0.4em"
                   }}
                   onMouseEnter={() => handleListItemHover(item)}
                   onMouseLeave={() => handleListItemHover(null)}
@@ -150,7 +146,8 @@ const AutoComplete = () => {
                 >
                   {item}
                 </li>
-              ))}
+              ))
+            : null}
         </ul>
       </div>
       <div className="table-container">
@@ -162,7 +159,6 @@ const AutoComplete = () => {
           </thead>
           <tbody>
             <tr style={{ color: "rgb(211, 204, 204)" }}>{result.name}</tr>
-
             <tr
               className="pastSearchbox"
               style={{ color: "rgb(211, 204, 204)" }}
