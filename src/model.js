@@ -1,0 +1,26 @@
+const birds = [
+  { name: "Sparrow", about: "Small and common bird, often found in gardens and parks" },
+  { name: "Robin", about: "Medium-sized bird with a distinctive red breast, often associated with Christmas" },
+  { name: "Dove", about: "Symbol of peace and love, often used in weddings and religious ceremonies" },
+  { name: "Blue Jay", about: "Small to medium-sized bird with a blue crest on its head, often found in North America" },
+  { name: "Pigeon", about: "Large, common bird found in urban areas, often used for racing and carrying messages" },
+  { name: "Finch", about: "Small, colorful bird often kept as a pet due to their vibrant feathers and cheerful demeanor" },
+  { name: "Swan", about: "Elegant, large bird often associated with grace, beauty, and romance" },
+  { name: "Crow", about: "Large, intelligent bird known for their loud cawing and often associated with death and omens" },
+  { name: "Seagull", about: "Medium to large-sized bird often found near the sea or other bodies of water, known for their distinctive calls" },
+  { name: "Owl", about: "Nocturnal bird of prey with large eyes, often associated with wisdom and mystery" },
+  { name: "Eagle", about: "Powerful bird of prey known for its sharp talons and keen eyesight" },
+  { name: "Hummingbird", about: "Small, colorful bird known for its ability to hover in mid-air and flap its wings rapidly" },
+  { name: "Pelican", about: "Large, distinctive bird with a long beak used for catching fish" },
+  { name: "Woodpecker", about: "Bird with a strong, pointed beak used for drilling holes in trees to find insects" },
+  { name: "Penguin", about: "Flightless bird found in the Southern Hemisphere, known for its distinctive black and white markings" },
+  { name: "Hawk", about: "Bird of prey with sharp talons and a hooked beak, known for its ability to hunt small mammals" },
+  { name: "Parrot", about: "Colorful bird often kept as a pet due to its ability to mimic human speech" },
+  { name: "Toucan", about: "Large, colorful bird with a long, curved beak found in tropical regions" },
+  { name: "Flamingo", about: "Tall, pink bird with long legs and a distinctive curved beak, often found in large flocks" },
+  { name: "Albatross", about: "Large seabird with long wingspan and known for its ability to fly long distances over the ocean" },
+  { name: "Kingfisher", about: "Small to medium-sized bird often found near bodies of water and known for its ability to catch fish" },
+  { name: "Quail", about: "Small, plump bird often hunted for its meat and eggs" },
+  { name: "Stork", about: "Large, long-legged bird known for its distinctive beak and often associated with bringing babies" }
+];
+  export default birds

@@ -78,12 +78,14 @@ button:hover {
 
 .table-container {
   margin-top: -30rem;
+ 
 }
 
 .past-searches {
   border-collapse: collapse;
   width: 50%;
   margin: 0 auto;
+  padding: 30px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -98,10 +100,10 @@ thead th {
 }
 
 tr {
-  font-size: 2.4rem;
+  font-size: 2rem;
   text-align: center;
   background-color: rgb(37, 37, 37);
-  cursor: pointer;
+ 
 }
 
 h4 {
@@ -113,9 +115,13 @@ h4 {
 }
 
 @media screen and (max-width: 506px) {
+  .list-item{
+    width: 219px !important;
+  }
   li {
     width: 219px;
   }
+  
 
   .clearbtn {
     position: absolute;
@@ -126,4 +132,17 @@ h4 {
   .table-container {
     margin-top: -38rem;
   }
+}
+.highlight {
+  color: rgb(238, 241, 7);
+  font-weight: bold;
+}
+.list-item{
+  font-size: 1.4rem;
+  color: #fff;
+  width: 313px;
+  list-style: none;
+  cursor: pointer;
+  /* padding-left: 25px; */
+  padding-top: 0.8em;
 }
